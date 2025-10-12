@@ -10,6 +10,11 @@
     "module": "node16",
     "target": "es2020",
     "types": ["node"],
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -36,13 +41,11 @@
     "strict": true,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "moduleResolution": "node16",
     "skipLibCheck": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "outDir": "dist"
   }
 }
