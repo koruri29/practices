@@ -1,7 +1,5 @@
-_metadata.json
-
 # Node modules
-node_modules/
+**/node_modules/
 
 # TypeScript build output
 dist/
