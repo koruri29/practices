@@ -48,11 +48,11 @@ function App() {
   }
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className="app">
       <h1>メモアプリ</h1>
 
       {/* メモ追加フォーム */}
-      <div>
+      <div className="input-area">
         <input
           value={newText}
           onChange={e => setNewText(e.target.value)}
@@ -64,7 +64,7 @@ function App() {
       </div>
 
       {/* メモ一覧 */}
-      <ul>
+      <ul className="note-list">
         {notes.map(note => (
           <li key={note.id}>
             {note.content}{' '}
