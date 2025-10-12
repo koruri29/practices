@@ -8,11 +8,9 @@
 ## 演習例
 
 ### 20250816_google-calendar-api
-- **内容**: Google Calendar API を使った簡単なデータ表示・取得演習  
-- **ポイント**:
-  - Node.js + TypeScript で OAuth2 認証を実装
-  - カレンダー予定の取得・絞り込み
-  - CLI 操作と型安全な API データ処理
+- Google Calendar API を使った簡単なデータ表示・取得演習  
+### 20251003_memo-app-express-vite
+- Express.js, Viteを使ったシンプルなメモアプリ
 
 ※ 他の演習も同様にサブフォルダとして追加予定です。
 
