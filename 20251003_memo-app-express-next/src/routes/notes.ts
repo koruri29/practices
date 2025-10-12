@@ -31,5 +31,22 @@ router.post('/', (req, res) => {
   res.status(201).json(newNote)
 })
 
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "Invalid id" })
+  }
+
+  const index = notes.findIndex(n => n.id ===id)
+
+  if (index === -1) {
+    return res.status(400).json({ error: "Note not found" })
+  }
+
+  notes.splice(index, 1)
+  res.json({ message: "deleted" })
+})
+
 
 export default router
