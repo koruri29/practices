@@ -8,12 +8,10 @@ const db: Post[] = [];
 
 export const createPostRecord = async (data: CreatePostData): Promise<PostResponse> => {
   const item = {
-    id: "generated-id",
+    id: crypto.randomUUID(),
     ...data,
   }
-
   db.push(item)
-
   return item
 }
 
