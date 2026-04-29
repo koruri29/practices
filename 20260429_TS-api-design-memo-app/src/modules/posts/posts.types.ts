@@ -24,9 +24,16 @@ export type UpdatePostRequest = {
   content?: string
 };
 
+export type PublishRequestParams = {
+  id: string
+}
+
 export type PublishPostResponse = PostResponse;
 
 export type ErrorResponse = {
-  code: "ALREADY_PUBLISHED" | "POST_NOT_FOUND";
+  code:
+    "ALREADY_PUBLISHED" |
+    "POST_NOT_FOUND"    |
+    "FAILED_TO_PUBLISH";
   message: string;
 };

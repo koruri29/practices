@@ -8,3 +8,8 @@ export type Post = {
 }
 
 export type CreatePostData = Omit<Post, "id">
+
+export type PublishPostData = {
+  id: string
+  publishedAt: string
+}
