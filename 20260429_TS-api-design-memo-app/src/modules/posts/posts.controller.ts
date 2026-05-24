@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
-import { createPost, publishPost } from "./posts.service";
-import { PublishRequestParams } from "./posts.types";
+import { createPost, getPostById, getPosts, publishPost } from "./posts.service";
+import { GetPostByIdRequest, PublishRequestParams } from "./posts.types";
 
 
-export const createPostHandler = async (req: Request, res: Response) => {
+export const createPostHandler = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const result = await createPost(req.body)
   res.status(201).json(result)
 }
-
 
 export const publishPostHandler = async (
   req: Request<PublishRequestParams>,
@@ -38,4 +40,29 @@ export const publishPostHandler = async (
       message: "公開に失敗しました",
     })
   }
+}
+
+
+export const getPostsHandler = async (
+  _req: Request,
+  res: Response
+): Promise<void> => {
+  const result = await getPosts()
+  res.status(200).json(result)
+}
+
+export const getPostByIdHandler = async (
+  req: Request<GetPostByIdRequest>,
+  res: Response
+): Promise<void> => {
+  const result = await getPostById(req.params.id)
+
+  if (result === null) {
+    res.status(404).json({
+      code: "POST_NOT_FOUND",
+      message: "記事が見つかりません",
+    })
+    return
+  }
+  res.status(200).json(result)
 }

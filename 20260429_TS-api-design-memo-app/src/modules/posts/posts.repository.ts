@@ -32,3 +32,7 @@ export const updatePost = async (
 
   return updated;
 };
+
+export const getAllPosts = async () => {
+  return db
+}

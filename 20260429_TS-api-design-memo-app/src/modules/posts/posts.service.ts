@@ -1,6 +1,6 @@
 import { Post } from "./posts.model";
-import { createPostRecord, findPostById, updatePost } from "./posts.repository";
-import { CreatePostRequest, ErrorResponse, PublishPostResponse } from "./posts.types";
+import { createPostRecord, findPostById, getAllPosts, updatePost } from "./posts.repository";
+import { CreatePostRequest, ErrorResponse, GetPostsResponse, PostResponse, PublishPostResponse } from "./posts.types";
 
 
 export const createPost = async (input: CreatePostRequest) => {
@@ -23,7 +23,7 @@ export const publishPost = async (id: string): Promise<PublishPostResponse> => {
   if (!post) {
     throw new Error("POST_NOT_FOUND")
   }
-  if (post.id === "published") {
+  if (post.status === "published") {
     throw new Error("ALREADY_PUBLISHED")
   }
 
@@ -51,3 +51,25 @@ const toPostResponse = (post: Post): PublishPostResponse => {
     createdAt: post.createdAt,
   };
 };
+
+
+export const getPosts = async (): Promise<GetPostsResponse> => {
+  const rawPosts = await getAllPosts()
+  return toGetPostsResponse(rawPosts)
+}
+
+const toGetPostsResponse = (rawPosts: Post[]): GetPostsResponse => {
+  const posts = rawPosts.map(rp => toPostResponse(rp))
+  const count = posts.length
+  return {
+    items: posts,
+    totalCount: count,
+    page: 1,
+    pageSize: count,
+  }
+}
+
+
+export const getPostById = async (id: string): Promise<Post | null> => {
+  return await findPostById(id)
+}

@@ -7,6 +7,10 @@ export type PostResponse = {
   createdAt: string
 };
 
+export type GetPostByIdRequest = {
+  id: string
+}
+
 export type GetPostsResponse = {
   items: PostResponse[]     // 今ページのデータ
   totalCount: number        // 全体件数
